@@ -345,6 +345,14 @@ a {
   padding: 22px 24px;
 }
 
+.start-card + .start-card {
+  margin-top: 18px;
+}
+
+.start-card[hidden] {
+  display: none;
+}
+
 .start-card .big-icon {
   flex: none;
   font-size: 2.6rem;

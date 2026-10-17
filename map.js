@@ -46,7 +46,7 @@
   // 旅の町（ready: 読める町 / それ以外は「？」で隠す）
   var TOWNS = [
     { id: 'narita',  en: 'Narita',  lon: 140.4, lat: 35.8, icon: '✈', page: 'narita.html', ready: true },
-    { id: 'seoul',   en: 'Seoul',   lon: 127.0, lat: 37.6 },
+    { id: 'seoul',   en: 'Seoul',   lon: 127.0, lat: 37.6, icon: '★', page: 'seoul.html', ready: true },
     { id: 'taipei',  en: 'Taipei',  lon: 121.5, lat: 25.0 },
     { id: 'hongkong',en: 'Hong Kong', lon: 114.2, lat: 22.3 },
     { id: 'bangkok', en: 'Bangkok', lon: 100.5, lat: 13.75 }
@@ -89,7 +89,7 @@
 
   // 海の名前（英語）
   var seaNames = el('g', { 'font-family': 'Nunito, sans-serif', 'font-style': 'italic', 'font-weight': 700, 'font-size': 13, fill: '#6fa6b8', 'text-anchor': 'middle' });
-  [['Pacific Ocean', 110, 265], ['Pacific Ocean', 935, 300], ['Atlantic Ocean', 405, 210], ['Indian Ocean', 700, 330]].forEach(function (s) {
+  [['Pacific Ocean', 110, 265], ['Pacific Ocean', 950, 215], ['Atlantic Ocean', 405, 210], ['Indian Ocean', 700, 330]].forEach(function (s) {
     seaNames.appendChild(el('text', { x: s[1], y: s[2] }, s[0]));
   });
   svg.appendChild(seaNames);
@@ -119,40 +119,42 @@
 
   // 町の印
   var markers = [];
-  TOWNS.forEach(function (t) {
+  TOWNS.forEach(function (t, i) {
     var g = el('g', { class: 'town', tabindex: 0, role: 'button' });
     var stamped = !!stamps[t.id];
+    // 前の町のスタンプを押すと、次の町が見えてくる
+    var open = t.ready && (i === 0 || !!stamps[TOWNS[i - 1].id]);
     var label = { x: 0, y: 25, 'text-anchor': 'middle', 'font-family': 'Nunito, sans-serif', 'font-weight': 800, 'font-size': 10, fill: '#2f3437', stroke: '#fffaf1', 'stroke-width': 3, 'paint-order': 'stroke' };
 
-    if (t.ready && stamped) {
+    if (open && stamped) {
       g.appendChild(el('circle', { r: 12, fill: '#fbe5de', stroke: '#d9472b', 'stroke-width': 2.5 }));
       g.appendChild(el('circle', { r: 8.5, fill: 'none', stroke: '#d9472b', 'stroke-width': 1 }));
       g.appendChild(el('text', { y: 4.5, 'text-anchor': 'middle', 'font-size': 12, fill: '#d9472b' }, t.icon));
       g.appendChild(el('text', label, t.en));
       g.setAttribute('aria-label', t.en + '（スタンプ済み）');
-    } else if (t.ready) {
+    } else if (open) {
       g.appendChild(el('circle', { class: 'pulse', r: 11, fill: '#d9472b', opacity: 0.6 }));
       g.appendChild(el('circle', { r: 11, fill: '#fff', stroke: '#d9472b', 'stroke-width': 2.5 }));
       g.appendChild(el('text', { y: 4.5, 'text-anchor': 'middle', 'font-size': 12, fill: '#d9472b' }, t.icon));
       g.appendChild(el('text', label, t.en));
-      g.appendChild(el('text', { x: 0, y: -17, 'text-anchor': 'middle', 'font-family': 'Nunito, sans-serif', 'font-weight': 800, 'font-size': 9, fill: '#d9472b', stroke: '#fffaf1', 'stroke-width': 3, 'paint-order': 'stroke', 'letter-spacing': 1 }, 'START'));
-      g.setAttribute('aria-label', t.en + '（ここから出発）');
+      g.appendChild(el('text', { x: 0, y: -17, 'text-anchor': 'middle', 'font-family': 'Nunito, sans-serif', 'font-weight': 800, 'font-size': 9, fill: '#d9472b', stroke: '#fffaf1', 'stroke-width': 3, 'paint-order': 'stroke', 'letter-spacing': 1 }, i === 0 ? 'START' : 'NEXT'));
+      g.setAttribute('aria-label', t.en + (i === 0 ? '（ここから出発）' : '（次の町）'));
     } else {
       g.appendChild(el('circle', { r: 9, fill: '#fffaf1', stroke: '#9a8f7a', 'stroke-width': 1.6, 'stroke-dasharray': '3 2' }));
       g.appendChild(el('text', { y: 4.5, 'text-anchor': 'middle', 'font-family': 'Nunito, sans-serif', 'font-weight': 800, 'font-size': 12, fill: '#9a8f7a' }, '?'));
       g.setAttribute('aria-label', 'まだひみつの町');
     }
 
-    function open() {
-      if (t.ready) {
+    function go() {
+      if (open) {
         location.href = t.page;
       } else if (msg) {
-        msg.textContent = '？ の町は、まだひみつ。旅を進めると見えてくるよ。';
+        msg.textContent = '？ の町は、まだひみつ。前の町でスタンプを押すと見えてくるよ。';
       }
     }
-    g.addEventListener('click', open);
+    g.addEventListener('click', go);
     g.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
     });
     svg.appendChild(g);
     markers.push({ g: g, t: t });
@@ -199,6 +201,11 @@
   });
 
   window.addEventListener('resize', function () { apply(current); });
+
+  // トップの町カード：前の町のスタンプを押したら出す
+  document.querySelectorAll('[data-after]').forEach(function (card) {
+    if (stamps[card.dataset.after]) card.hidden = false;
+  });
 
   // スタンプの数
   var count = document.getElementById('stamp-count');
