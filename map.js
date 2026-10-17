@@ -47,14 +47,14 @@
   var TOWNS = [
     { id: 'narita',  en: 'Narita',  lon: 140.4, lat: 35.8, icon: '✈', page: 'narita.html', ready: true },
     { id: 'seoul',   en: 'Seoul',   lon: 127.0, lat: 37.6, icon: '★', page: 'seoul.html', ready: true },
-    { id: 'taipei',  en: 'Taipei',  lon: 121.5, lat: 25.0 },
+    { id: 'taipei',  en: 'Taipei',  lon: 121.5, lat: 25.0, icon: '☾', page: 'taipei.html', ready: true },
     { id: 'hongkong',en: 'Hong Kong', lon: 114.2, lat: 22.3 },
     { id: 'bangkok', en: 'Bangkok', lon: 100.5, lat: 13.75 }
   ];
 
   var VIEWS = {
     world: [0, 40, 1000, 380],
-    asia: [660, 95, 380, 144.5]
+    asia: [690, 112, 303, 115.2]
   };
 
   function readStamps() {
@@ -167,10 +167,12 @@
     svg.setAttribute('viewBox', vb.join(' '));
     // 画面の上で同じくらいの大きさに見えるように（せまい画面で世界全体のときは大きくしすぎない）
     var shown = svg.getBoundingClientRect().width || 1000;
-    var s = Math.min(vb[2] / shown, 1.6);
+    var s = Math.min(vb[2] / shown * (shown < 600 ? 0.75 : 1), 1.6);
     markers.forEach(function (m) {
       m.g.setAttribute('transform', 'translate(' + m.t.x + ' ' + m.t.y + ') scale(' + s + ')');
     });
+    // 海の名前も、拡大しても同じくらいの大きさに
+    seaNames.setAttribute('font-size', 13 * Math.min(s, 1));
     current = vb;
   }
 

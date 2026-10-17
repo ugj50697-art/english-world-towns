@@ -21,6 +21,26 @@
     } catch (e) {}
   }
 
+  // ---- 単語と前後の記号（" . , ! など）が別の行に分かれないようにする ----
+  document.querySelectorAll('.w').forEach(function (btn) {
+    var prev = btn.previousSibling, next = btn.nextSibling;
+    var before = prev && prev.nodeType === 3 ? (prev.textContent.match(/["'“‘]+$/) || [''])[0] : '';
+    var after = next && next.nodeType === 3 ? (next.textContent.match(/^[.,!?:;"'”’…]+/) || [''])[0] : '';
+    if (!before && !after) return;
+    var span = document.createElement('span');
+    span.style.whiteSpace = 'nowrap';
+    btn.parentNode.insertBefore(span, btn);
+    if (before) {
+      prev.textContent = prev.textContent.slice(0, -before.length);
+      span.appendChild(document.createTextNode(before));
+    }
+    span.appendChild(btn);
+    if (after) {
+      next.textContent = next.textContent.slice(after.length);
+      span.appendChild(document.createTextNode(after));
+    }
+  });
+
   // ---- 単語帳 ----
   var wordsKey = 'ewt-words-' + town;
   var words = load(wordsKey, []);
