@@ -372,6 +372,12 @@ a {
   margin-left: auto;
 }
 
+.start-card .click-hint {
+  margin-top: 6px;
+  color: #3c6f80;
+  font-weight: 700;
+}
+
 /* Buttons */
 .btn {
   display: inline-block;
