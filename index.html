@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英語でめぐる世界の町</title>
+  <meta name="description" content="英語が苦手な高校2年生 Sora と、元英語の先生 Grandpa Mori の世界の旅。やさしい英文を読みながら、中学2年生の英語から学び直すサイトです。">
+  <link rel="stylesheet" href="towns.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html">英語でめぐる<span>世界の町</span></a>
+      <nav class="header-nav">
+        <a href="#map">地図</a>
+        <a href="#cast">旅のなかま</a>
+        <a href="https://ugj50697-art.github.io/Mori-no-shiori/">森のしおり</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <p class="eyebrow">A JOURNEY IN ENGLISH</p>
+      <h1>英語でめぐる世界の町</h1>
+      <p class="lead">英語が苦手な Sora と、おじいちゃんの二人旅。<br>5つの英文から、もう一度はじめよう。</p>
+    </section>
+
+    <section class="section" id="map">
+      <h2 class="section-title">旅の地図 <small>WORLD MAP</small></h2>
+      <div class="map-card">
+        <div class="map-tools">
+          <div class="view-switch" role="group" aria-label="地図の広さ">
+            <button type="button" data-view="world" aria-pressed="true">世界</button>
+            <button type="button" data-view="asia" aria-pressed="false">アジアを拡大</button>
+          </div>
+          <p class="stamp-count">あつめたスタンプ <strong id="stamp-count">0</strong> / 5</p>
+        </div>
+        <div class="map-frame">
+          <svg id="world-map" viewBox="0 40 1000 380" role="img" aria-label="旅の世界地図"></svg>
+        </div>
+        <p class="map-message" id="map-message">赤い ✈ の町から旅がはじまるよ。押してみよう。</p>
+        <div class="legend">
+          <span><i class="lg-start"></i>ここから出発</span>
+          <span><i class="lg-stamp"></i>スタンプを押した町</span>
+          <span><i class="lg-secret"></i>まだひみつの町</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="start">
+      <div class="start-card">
+        <div class="big-icon" aria-hidden="true">✈️</div>
+        <div>
+          <p class="stop">STOP 0</p>
+          <h3>成田空港 <span class="en-font">Narita Airport</span></h3>
+          <p>旅のはじまり。5つの英文で、中1の英語をふり返ります。</p>
+        </div>
+        <a class="btn" href="narita.html">読みはじめる</a>
+      </div>
+    </section>
+
+    <section class="section" id="cast">
+      <h2 class="section-title">旅のなかま <small>TRAVELERS</small></h2>
+      <div class="cast">
+        <div class="person">
+          <div class="face" aria-hidden="true">🧑</div>
+          <div>
+            <h3>Sora</h3>
+            <p class="role">高校2年生</p>
+            <p>英語はずっと苦手。授業もあまり聞いていなかった。でも、知らない町を歩くのは、ちょっと好き。</p>
+          </div>
+        </div>
+        <div class="person grandpa">
+          <div class="face" aria-hidden="true">👴</div>
+          <div>
+            <h3>Grandpa Mori</h3>
+            <p class="role">Sora のおじいちゃん・元英語の先生</p>
+            <p>英語にはきびしい。言い方がちがうと、すぐに直される。けれど、じつはとても涙もろい。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">旅のすすめ方 <small>HOW TO TRAVEL</small></h2>
+      <ol class="steps">
+        <li>
+          <h3>町をえらぶ</h3>
+          <p>地図の町を押すと、その町の物語が読めます。</p>
+        </li>
+        <li>
+          <h3>英文を読む</h3>
+          <p>わからない単語は押してみよう。意味が出て、単語帳にたまります。</p>
+        </li>
+        <li>
+          <h3>スタンプをもらう</h3>
+          <p>読み終えたらスタンプ。地図に押されて、次の町が近づきます。</p>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="sisters">
+        <a href="https://ugj50697-art.github.io/Mori-no-shiori/">🌿 森のしおり</a>
+        <a href="https://ugj50697-art.github.io/europe-history/">🏛️ ヨーロッパの歴史</a>
+      </p>
+      <p>英語でめぐる世界の町 — 森のしおりの姉妹サイト</p>
+    </div>
+  </footer>
+
+  <script src="map.js"></script>
+</body>
+</html>

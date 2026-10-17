@@ -1,0 +1,827 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Nunito:wght@600;700;800&display=swap');
+
+:root {
+  --paper: #fffaf1;
+  --card: #ffffff;
+  --ink: #2f3437;
+  --ink-soft: #6a6f72;
+  --line: #ebe2cf;
+  --sea: #cfeaf2;
+  --sea-deep: #9fcfe0;
+  --land: #f5e2ae;
+  --green: #5b8c5a;
+  --red: #d9472b;
+  --red-deep: #b5361e;
+  --red-soft: #fbe5de;
+  color-scheme: light;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.en-font {
+  font-family: "Nunito", "Segoe UI", sans-serif;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 250, 241, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+}
+
+.logo span {
+  color: var(--red);
+}
+
+.header-nav {
+  display: flex;
+  gap: 18px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.header-nav a:hover {
+  color: var(--red);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 56px 0 28px;
+}
+
+.eyebrow {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  color: var(--red);
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 10px 0 14px;
+}
+
+.hero .lead {
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+
+/* Section titles */
+.section {
+  padding: 36px 0;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.section-title small {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.12em;
+}
+
+/* Map */
+.map-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(80, 60, 20, 0.06);
+}
+
+.map-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.view-switch {
+  display: inline-flex;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+}
+
+.view-switch button {
+  font: inherit;
+  font-size: 0.88rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 4px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.view-switch button[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+}
+
+.stamp-count {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.stamp-count strong {
+  color: var(--red);
+  font-family: "Nunito", sans-serif;
+  font-size: 1.15rem;
+}
+
+.map-frame {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--sea);
+}
+
+#world-map {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#world-map .town {
+  cursor: pointer;
+}
+
+#world-map .pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 1.8s ease-out infinite;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(2.2); opacity: 0; }
+}
+
+.map-message {
+  min-height: 1.85em;
+  margin-top: 10px;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 20px;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.legend i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  vertical-align: -2px;
+  margin-right: 6px;
+  font-style: normal;
+}
+
+.legend .lg-start { background: #fff; border: 2px solid var(--red); }
+.legend .lg-stamp { background: var(--red-soft); border: 2px solid var(--red); box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px var(--red); }
+.legend .lg-secret { background: var(--paper); border: 2px dashed #9a8f7a; }
+
+/* Characters */
+.cast {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.person {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.person .face {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  background: var(--sea);
+}
+
+.person.grandpa .face {
+  background: var(--land);
+}
+
+.person h3 {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.person .role {
+  font-size: 0.82rem;
+  color: var(--red);
+  margin-bottom: 4px;
+}
+
+.person p {
+  font-size: 0.94rem;
+}
+
+/* Steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px;
+  counter-increment: step;
+}
+
+.steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.steps h3 {
+  font-size: 1.02rem;
+}
+
+.steps p {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* Start card */
+.start-card {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: var(--card);
+  border: 2px solid var(--red);
+  border-radius: 22px;
+  padding: 22px 24px;
+}
+
+.start-card .big-icon {
+  flex: none;
+  font-size: 2.6rem;
+}
+
+.start-card .stop {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--red);
+}
+
+.start-card h3 {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.start-card p {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.start-card .btn {
+  margin-left: auto;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-weight: 700;
+  background: var(--red);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 26px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 3px 0 var(--red-deep);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--red-deep);
+}
+
+.btn[disabled] {
+  background: #c9c2b4;
+  box-shadow: none;
+  cursor: default;
+  transform: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  box-shadow: none;
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+  padding: 28px 0 40px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.sisters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-bottom: 8px;
+}
+
+.sisters a {
+  border-bottom: 1px solid var(--line);
+}
+
+.sisters a:hover {
+  color: var(--red);
+}
+
+/* ===== Story page ===== */
+.story-hero {
+  text-align: center;
+  padding: 40px 0 16px;
+}
+
+.story-hero .big-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.story-hero h1 {
+  font-size: clamp(1.6rem, 4.6vw, 2.2rem);
+  margin: 8px 0 2px;
+}
+
+.story-hero .en-name {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+}
+
+.grammar-tag {
+  display: inline-block;
+  margin-top: 12px;
+  background: var(--red-soft);
+  color: var(--red-deep);
+  font-size: 0.85rem;
+  border-radius: 999px;
+  padding: 3px 16px;
+}
+
+.narrow {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hint {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px dashed var(--sea-deep);
+  border-radius: 16px;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  margin: 20px 0;
+}
+
+.story {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 26px 28px;
+  box-shadow: 0 8px 24px rgba(80, 60, 20, 0.06);
+  list-style: none;
+  counter-reset: line;
+}
+
+.story li {
+  counter-increment: line;
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.story li:last-child {
+  border-bottom: 0;
+}
+
+.story li::before {
+  content: counter(line);
+  flex: none;
+  width: 26px;
+  height: 26px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--sea);
+  color: #3c6f80;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
+  display: grid;
+  place-items: center;
+}
+
+.story .en {
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.9;
+}
+
+.w {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0 1px;
+  border-bottom: 2px dotted var(--sea-deep);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.w:hover,
+.w:focus-visible {
+  background: var(--sea);
+  outline: none;
+}
+
+.w.seen {
+  background: #fff3c4;
+}
+
+.w.active {
+  background: var(--red-soft);
+  border-bottom-color: var(--red);
+}
+
+.bubble {
+  position: absolute;
+  z-index: 30;
+  max-width: min(280px, calc(100vw - 32px));
+  background: var(--ink);
+  color: #fff;
+  border-radius: 14px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.12s, transform 0.12s;
+}
+
+.bubble.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bubble b {
+  font-family: "Nunito", sans-serif;
+  margin-right: 8px;
+  color: #ffd9cd;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: var(--arrow, 50%);
+  margin-left: -7px;
+  border: 7px solid transparent;
+  border-top-color: var(--ink);
+}
+
+/* Translation */
+.translation {
+  margin-top: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 0 22px;
+}
+
+.translation summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 0;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #3c6f80;
+}
+
+.translation summary::-webkit-details-marker {
+  display: none;
+}
+
+.translation summary::before {
+  content: "＋";
+  display: inline-block;
+  width: 1.6em;
+  color: var(--red);
+}
+
+.translation[open] summary::before {
+  content: "－";
+}
+
+.translation[open] summary {
+  border-bottom: 1px dashed var(--line);
+}
+
+.translation ol {
+  padding: 12px 0 16px 1.6em;
+  font-size: 0.95rem;
+}
+
+.translation li {
+  padding: 3px 0;
+}
+
+.translation li::marker {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  color: #3c6f80;
+}
+
+/* Word book */
+.wordbook {
+  margin-top: 28px;
+  background: #fffdf6;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px 24px;
+}
+
+.wordbook h2 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.wordbook h2 span {
+  font-family: "Nunito", sans-serif;
+  color: var(--red);
+  margin-left: 6px;
+}
+
+.wordbook ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 20px;
+}
+
+.wordbook li {
+  display: flex;
+  gap: 12px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.wordbook li.new {
+  animation: flash 1.2s ease-out;
+}
+
+@keyframes flash {
+  from { background: #fff3c4; }
+  to { background: transparent; }
+}
+
+.wordbook li b {
+  font-family: "Nunito", sans-serif;
+  min-width: 6.5em;
+}
+
+.wordbook .empty {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* Finish & stamp */
+.finish {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.finish .tsuzuku {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.stamp {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto 6px;
+  border-radius: 50%;
+  border: 4px solid var(--red);
+  box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 6px var(--red);
+  color: var(--red);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-12deg);
+  background: rgba(251, 229, 222, 0.55);
+}
+
+.stamp.show {
+  display: flex;
+}
+
+.stamp.pressed {
+  animation: press 0.45s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+@keyframes press {
+  from { transform: rotate(-12deg) scale(1.9); opacity: 0; }
+  to { transform: rotate(-12deg) scale(1); opacity: 1; }
+}
+
+.stamp .s-top {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-size: 0.95rem;
+}
+
+.stamp .s-icon {
+  font-size: 1.9rem;
+  line-height: 1.2;
+}
+
+.stamp .s-date {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.next-box {
+  display: none;
+  margin-top: 18px;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.next-box.show {
+  display: flex;
+}
+
+.next-box .secret {
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* Phone */
+@media (max-width: 760px) {
+  .wrap {
+    padding: 0 16px;
+  }
+
+  .header-nav {
+    gap: 12px;
+    font-size: 0.82rem;
+  }
+
+  .map-card {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .cast,
+  .steps,
+  .wordbook ul {
+    grid-template-columns: 1fr;
+  }
+
+  .start-card {
+    flex-wrap: wrap;
+  }
+
+  .start-card .btn {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .story {
+    padding: 16px 16px;
+  }
+
+  .story .en {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .header-nav a:not(:last-child) {
+    display: none;
+  }
+}
