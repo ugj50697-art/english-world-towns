@@ -692,10 +692,20 @@ a {
   color: var(--ink);
 }
 
+/* 大切なルール（赤） */
 .grammar-box .note {
-  margin-top: 12px;
-  font-size: 0.88rem;
-  color: var(--ink-soft);
+  margin-top: 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--red-deep);
+  background: var(--red-soft);
+  border-left: 4px solid var(--red);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.grammar-box .note::before {
+  content: "★ 大切 ";
 }
 
 /* Word book */
