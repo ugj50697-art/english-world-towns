@@ -48,7 +48,7 @@
     { id: 'narita',  en: 'Narita',  lon: 140.4, lat: 35.8, icon: '✈', page: 'narita.html', ready: true },
     { id: 'seoul',   en: 'Seoul',   lon: 127.0, lat: 37.6, icon: '★', page: 'seoul.html', ready: true },
     { id: 'taipei',  en: 'Taipei',  lon: 121.5, lat: 25.0, icon: '☾', page: 'taipei.html', ready: true },
-    { id: 'hongkong',en: 'Hong Kong', lon: 114.2, lat: 22.3 },
+    { id: 'hongkong',en: 'Hong Kong', lon: 114.2, lat: 22.3, icon: '⚓', page: 'hongkong.html', ready: true },
     { id: 'bangkok', en: 'Bangkok', lon: 100.5, lat: 13.75 }
   ];
 
