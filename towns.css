@@ -829,6 +829,15 @@ a {
   color: var(--ink-soft);
 }
 
+.prev-town {
+  margin-top: 28px;
+  font-size: 0.9rem;
+}
+
+.prev-town a {
+  color: var(--ink-soft);
+}
+
 /* Phone */
 @media (max-width: 760px) {
   .wrap {
