@@ -55,7 +55,8 @@
     { id: 'istanbul', en: 'Istanbul', lon: 28.98, lat: 41.01, icon: '☕', page: 'istanbul.html', ready: true },
     { id: 'cairo', en: 'Cairo', lon: 31.24, lat: 30.04, icon: '▲', page: 'cairo.html', ready: true },
     { id: 'athens', en: 'Athens', lon: 23.73, lat: 37.98, icon: 'Ω', page: 'athens.html', ready: true },
-    { id: 'rome', en: 'Rome', lon: 12.5, lat: 41.9, icon: '◎', page: 'rome.html', ready: true }
+    { id: 'rome', en: 'Rome', lon: 12.5, lat: 41.9, icon: '◎', page: 'rome.html', ready: true },
+    { id: 'geneva', en: 'Geneva', lon: 6.14, lat: 46.2, icon: '✚', page: 'geneva.html', ready: true, labelLeft: true }
   ];
 
   var VIEWS = {
@@ -131,6 +132,8 @@
     // 前の町のスタンプを押すと、次の町が見えてくる
     var open = t.ready && (i === 0 || !!stamps[TOWNS[i - 1].id]);
     var label = { x: 0, y: 25, 'text-anchor': 'middle', 'font-family': 'Nunito, sans-serif', 'font-weight': 800, 'font-size': 10, fill: '#2f3437', stroke: '#fffaf1', 'stroke-width': 3, 'paint-order': 'stroke' };
+    // となりの町と重なるときは、名前を印の左に出す
+    if (t.labelLeft) { label.x = -16; label.y = 4; label['text-anchor'] = 'end'; }
 
     if (open && stamped) {
       g.appendChild(el('circle', { r: 12, fill: '#fbe5de', stroke: '#d9472b', 'stroke-width': 2.5 }));
