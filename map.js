@@ -51,12 +51,13 @@
     { id: 'hongkong',en: 'Hong Kong', lon: 114.2, lat: 22.3, icon: '⚓', page: 'hongkong.html', ready: true },
     { id: 'bangkok', en: 'Bangkok', lon: 100.5, lat: 13.75, icon: '☸', page: 'bangkok.html', ready: true },
     { id: 'singapore', en: 'Singapore', lon: 103.8, lat: 1.35, icon: '❀', page: 'singapore.html', ready: true },
-    { id: 'mumbai', en: 'Mumbai', lon: 72.88, lat: 19.08, icon: '☀', page: 'mumbai.html', ready: true }
+    { id: 'mumbai', en: 'Mumbai', lon: 72.88, lat: 19.08, icon: '☀', page: 'mumbai.html', ready: true },
+    { id: 'istanbul', en: 'Istanbul', lon: 28.98, lat: 41.01, icon: '☕', page: 'istanbul.html', ready: true }
   ];
 
   var VIEWS = {
     world: [0, 40, 1000, 380],
-    asia: [570, 112, 430, 163.4]
+    asia: [530, 105, 470, 178.6]
   };
 
   function readStamps() {
