@@ -52,7 +52,9 @@
     { id: 'bangkok', en: 'Bangkok', lon: 100.5, lat: 13.75, icon: '☸', page: 'bangkok.html', ready: true },
     { id: 'singapore', en: 'Singapore', lon: 103.8, lat: 1.35, icon: '❀', page: 'singapore.html', ready: true },
     { id: 'mumbai', en: 'Mumbai', lon: 72.88, lat: 19.08, icon: '☀', page: 'mumbai.html', ready: true },
-    { id: 'istanbul', en: 'Istanbul', lon: 28.98, lat: 41.01, icon: '☕', page: 'istanbul.html', ready: true }
+    { id: 'istanbul', en: 'Istanbul', lon: 28.98, lat: 41.01, icon: '☕', page: 'istanbul.html', ready: true },
+    { id: 'cairo', en: 'Cairo', lon: 31.24, lat: 30.04, icon: '▲', page: 'cairo.html', ready: true },
+    { id: 'athens', en: 'Athens', lon: 23.73, lat: 37.98, icon: 'Ω', page: 'athens.html', ready: true }
   ];
 
   var VIEWS = {
