@@ -127,6 +127,90 @@
     lastWidth = w;
   });
 
+  // ---- 英文の読み上げ（1文ずつ読む。止めたら、その文の頭から再開） ----
+  var story = document.querySelector('.story');
+  var synth = window.speechSynthesis;
+  if (story) {
+    var bar = document.createElement('div');
+    bar.className = 'listen';
+    story.parentNode.insertBefore(bar, story);
+
+    if (!synth || !window.SpeechSynthesisUtterance) {
+      bar.innerHTML = '<p class="listen-note">このブラウザでは、英文の音声が使えません。</p>';
+    } else {
+      bar.innerHTML =
+        '<span class="listen-label">🔊 英文を聞く</span>' +
+        '<button type="button" class="listen-btn" data-act="play">▶ はじめから</button>' +
+        '<button type="button" class="listen-btn" data-act="pause" disabled>⏸ 止める</button>' +
+        '<button type="button" class="listen-btn" data-act="resume" disabled>⏯ 再開</button>';
+
+      var lines = Array.prototype.slice.call(story.querySelectorAll('li'));
+      var playBtn = bar.querySelector('[data-act="play"]');
+      var pauseBtn = bar.querySelector('[data-act="pause"]');
+      var resumeBtn = bar.querySelector('[data-act="resume"]');
+      var index = 0, run = 0, voice = null;
+
+      // 英語の声をえらぶ（なめらかな声があれば、それを使う）
+      function pickVoice() {
+        var all = synth.getVoices().filter(function (v) { return /^en[-_]/i.test(v.lang); });
+        var us = all.filter(function (v) { return /en[-_]US/i.test(v.lang); });
+        var good = function (v) { return /Google|Natural|Online/i.test(v.name); };
+        voice = us.filter(good)[0] || all.filter(good)[0] || us[0] || all[0] || null;
+      }
+      pickVoice();
+      if (synth.addEventListener) synth.addEventListener('voiceschanged', pickVoice);
+
+      function mark(i) {
+        lines.forEach(function (li, k) { li.classList.toggle('speaking', k === i); });
+      }
+
+      function setState(state) {
+        pauseBtn.disabled = state !== 'playing';
+        resumeBtn.disabled = state !== 'paused';
+        if (state === 'idle') mark(-1);
+      }
+
+      function speakFrom(i, id) {
+        if (id !== run) return;
+        if (i >= lines.length) { index = 0; setState('idle'); return; }
+        index = i;
+        mark(i);
+        var u = new SpeechSynthesisUtterance(lines[i].querySelector('.en').textContent.replace(/\s+/g, ' ').trim());
+        u.lang = 'en-US';
+        if (voice) u.voice = voice;
+        u.rate = 0.85;
+        u.onend = function () { speakFrom(i + 1, id); };
+        synth.speak(u);
+      }
+
+      function start(i) {
+        run++;
+        var id = run;
+        setState('playing');
+        if (synth.speaking || synth.pending) {
+          synth.cancel();
+          // cancel のすぐあとに speak すると読まないブラウザがあるので、少し待つ
+          setTimeout(function () { speakFrom(i, id); }, 80);
+        } else {
+          // iPhone などでは、押したその場で読みはじめないと音が出ない
+          speakFrom(i, id);
+        }
+      }
+
+      playBtn.addEventListener('click', function () { start(0); });
+      pauseBtn.addEventListener('click', function () {
+        run++;
+        synth.cancel();
+        setState('paused');
+        mark(index);
+      });
+      resumeBtn.addEventListener('click', function () { start(index); });
+
+      // ページを離れたら止める
+      window.addEventListener('pagehide', function () { run++; synth.cancel(); });
+    }
+  }
+
   // ---- スタンプ ----
   var stampBtn = document.getElementById('stamp-btn');
   var stamp = document.getElementById('stamp');

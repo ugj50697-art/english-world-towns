@@ -610,6 +610,56 @@ a {
   border-top-color: var(--ink);
 }
 
+/* Listen（英文の読み上げ） */
+.listen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin: 0 0 14px;
+}
+
+.listen-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-right: 4px;
+}
+
+.listen-btn {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--red-deep);
+  background: #fff;
+  border: 2px solid var(--red);
+  border-radius: 999px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+.listen-btn:hover:not(:disabled),
+.listen-btn:focus-visible {
+  background: var(--red-soft);
+  outline: none;
+}
+
+.listen-btn:disabled {
+  color: #b9b2a5;
+  border-color: #ddd6c8;
+  cursor: default;
+}
+
+.listen-note {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.story li.speaking {
+  background: #fff3c4;
+  box-shadow: 0 0 0 8px #fff3c4;
+  border-radius: 6px;
+}
+
 /* Translation */
 .translation {
   margin-top: 18px;
