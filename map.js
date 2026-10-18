@@ -54,12 +54,13 @@
     { id: 'mumbai', en: 'Mumbai', lon: 72.88, lat: 19.08, icon: '☀', page: 'mumbai.html', ready: true },
     { id: 'istanbul', en: 'Istanbul', lon: 28.98, lat: 41.01, icon: '☕', page: 'istanbul.html', ready: true },
     { id: 'cairo', en: 'Cairo', lon: 31.24, lat: 30.04, icon: '▲', page: 'cairo.html', ready: true },
-    { id: 'athens', en: 'Athens', lon: 23.73, lat: 37.98, icon: 'Ω', page: 'athens.html', ready: true }
+    { id: 'athens', en: 'Athens', lon: 23.73, lat: 37.98, icon: 'Ω', page: 'athens.html', ready: true },
+    { id: 'rome', en: 'Rome', lon: 12.5, lat: 41.9, icon: '◎', page: 'rome.html', ready: true }
   ];
 
   var VIEWS = {
     world: [0, 40, 1000, 380],
-    asia: [530, 105, 470, 178.6]
+    asia: [480, 95, 520, 197.6] // アジアからヨーロッパまで
   };
 
   function readStamps() {
