@@ -50,7 +50,8 @@
     { id: 'taipei',  en: 'Taipei',  lon: 121.5, lat: 25.0, icon: '☾', page: 'taipei.html', ready: true },
     { id: 'hongkong',en: 'Hong Kong', lon: 114.2, lat: 22.3, icon: '⚓', page: 'hongkong.html', ready: true },
     { id: 'bangkok', en: 'Bangkok', lon: 100.5, lat: 13.75, icon: '☸', page: 'bangkok.html', ready: true },
-    { id: 'singapore', en: 'Singapore', lon: 103.8, lat: 1.35, icon: '❀', page: 'singapore.html', ready: true }
+    { id: 'singapore', en: 'Singapore', lon: 103.8, lat: 1.35, icon: '❀', page: 'singapore.html', ready: true },
+    { id: 'mumbai', en: 'Mumbai', lon: 72.88, lat: 19.08, icon: '☀', page: 'mumbai.html', ready: true }
   ];
 
   var VIEWS = {
